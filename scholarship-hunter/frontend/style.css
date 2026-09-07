@@ -1,0 +1,205 @@
+:root {
+  --navy: #1c2b4a;
+  --navy-light: #2f4270;
+  --gold: #c9962c;
+  --bg: #f9f8f6;
+  --card: #ffffff;
+  --text: #23262f;
+  --text-muted: #6b7280;
+  --border: #e4e2dc;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+}
+
+.page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+.brand {
+  margin-bottom: 40px;
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.brand-mark { color: var(--navy); }
+.brand-mark-accent { color: var(--gold); }
+
+.form-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 40px;
+}
+
+h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 32px;
+  margin: 0 0 8px;
+  color: var(--navy);
+}
+
+.subtitle {
+  color: var(--text-muted);
+  margin: 0 0 32px;
+  font-size: 15px;
+}
+
+.field {
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+
+input, select {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--navy);
+  background: var(--card);
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  background: var(--navy);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.15s ease;
+}
+
+button:hover { background: var(--navy-light); }
+button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.error {
+  color: #b91c1c;
+  font-size: 13px;
+  margin-top: 12px;
+  min-height: 16px;
+}
+
+/* ---------- Opportunities page ---------- */
+
+.opps-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 28px;
+}
+
+.opps-header h1 {
+  font-size: 26px;
+  margin: 0;
+}
+
+.opps-count {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.opp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.opp-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px;
+}
+
+.opp-type {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: var(--gold);
+  background: rgba(201, 150, 44, 0.12);
+  padding: 3px 9px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.opp-card h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 17px;
+  margin: 0 0 8px;
+  color: var(--navy);
+}
+
+.opp-card p {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  margin: 0 0 14px;
+}
+
+.opp-deadline {
+  font-size: 13px;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+
+.opp-deadline strong { color: var(--navy); }
+
+.opp-card a {
+  display: inline-block;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--navy);
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--gold);
+  padding-bottom: 1px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+}
+
+.loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+}
