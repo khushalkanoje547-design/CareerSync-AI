@@ -3,9 +3,15 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
+const studentRoutes = require('./routes/students');
+const opportunityRoutes = require('./routes/opportunities');
+
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+app.use('/api/students', studentRoutes);
+app.use('/api/opportunities', opportunityRoutes);
 
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB connected'))
