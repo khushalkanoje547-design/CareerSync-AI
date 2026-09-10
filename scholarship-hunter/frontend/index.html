@@ -10,69 +10,98 @@
 </head>
 <body>
 
-  <div class="page">
-    <header class="brand">
-      <span class="brand-mark">CareerSync</span><span class="brand-mark-accent">AI</span>
-    </header>
+  <div class="shell">
+    <div class="intro-panel">
+      <div class="brand">
+        <span class="brand-mark">CareerSync</span><span class="brand-mark-accent">AI</span>
+      </div>
 
-    <main class="form-card">
-      <h1>Tell us about you</h1>
-      <p class="subtitle">This takes under a minute, and it's what powers your matches.</p>
+      <span class="intro-eyebrow">For Indian college students</span>
+      <h1 class="intro-heading">Every scholarship, ranked for you.</h1>
+      <p class="intro-text">
+        Thousands of scholarships, hackathons and internships open every year —
+        most students never hear about the ones they'd actually qualify for.
+      </p>
 
-      <form id="profileForm">
-        <div class="field">
-          <label for="name">Full name</label>
-          <input type="text" id="name" required placeholder="e.g. Khushal Kanoje">
-        </div>
+      <ul class="intro-highlights">
+        <li>
+          <span class="highlight-dot"></span>
+          See only what you're eligible for, not everything that exists
+        </li>
+        <li>
+          <span class="highlight-dot"></span>
+          Deadlines sorted by urgency, so nothing slips by
+        </li>
+        <li>
+          <span class="highlight-dot"></span>
+          One profile, matched against everything we track
+        </li>
+      </ul>
 
-        <div class="field">
-          <label for="email">Email</label>
-          <input type="email" id="email" required placeholder="you@college.edu">
-        </div>
+      <p class="intro-footline">Scholarships, hackathons and internships — pulled from NSP, AICTE and beyond.</p>
+    </div>
 
-        <div class="row">
+    <div class="form-panel">
+      <main class="form-card">
+        <h2>Tell us about you</h2>
+        <p class="subtitle">Takes under a minute — this is what powers your matches.</p>
+
+        <form id="profileForm">
           <div class="field">
-            <label for="branch">Branch</label>
-            <input type="text" id="branch" required placeholder="e.g. Computer Science">
+            <label for="name">Full name</label>
+            <input type="text" id="name" required placeholder="e.g. Khushal Kanoje">
           </div>
-          <div class="field">
-            <label for="year">Year</label>
-            <select id="year" required>
-              <option value="">Select</option>
-              <option value="1">1st Year</option>
-              <option value="2">2nd Year</option>
-              <option value="3">3rd Year</option>
-              <option value="4">4th Year</option>
-            </select>
-          </div>
-        </div>
 
-        <div class="row">
           <div class="field">
-            <label for="category">Category</label>
-            <select id="category">
-              <option value="General">General</option>
-              <option value="OBC">OBC</option>
-              <option value="SC">SC</option>
-              <option value="ST">ST</option>
-              <option value="EWS">EWS</option>
-            </select>
+            <label for="email">Email</label>
+            <input type="email" id="email" required placeholder="you@college.edu">
           </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="branch">Branch</label>
+              <input type="text" id="branch" required placeholder="e.g. Computer Science">
+            </div>
+            <div class="field">
+              <label for="year">Year</label>
+              <select id="year" required>
+                <option value="">Select</option>
+                <option value="1">1st Year</option>
+                <option value="2">2nd Year</option>
+                <option value="3">3rd Year</option>
+                <option value="4">4th Year</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="category">Category</label>
+              <select id="category">
+                <option value="General">General</option>
+                <option value="OBC">OBC</option>
+                <option value="SC">SC</option>
+                <option value="ST">ST</option>
+                <option value="EWS">EWS</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="location">Location</label>
+              <input type="text" id="location" placeholder="e.g. Aurangabad">
+            </div>
+          </div>
+
           <div class="field">
-            <label for="location">Location</label>
-            <input type="text" id="location" placeholder="e.g. Aurangabad">
+            <label for="skills">Skills</label>
+            <input type="text" id="skills" placeholder="React, Python, Public Speaking">
+            <span class="hint">Comma-separated</span>
           </div>
-        </div>
 
-        <div class="field">
-          <label for="skills">Skills</label>
-          <input type="text" id="skills" placeholder="React, Python, Public Speaking (comma-separated)">
-        </div>
-
-        <button type="submit" id="submitBtn">Find my opportunities</button>
-        <p class="error" id="errorMsg"></p>
-      </form>
-    </main>
+          <button type="submit" id="submitBtn">Find my opportunities</button>
+          <p class="error" id="errorMsg"></p>
+        </form>
+      </main>
+    </div>
   </div>
 
   <script src="script.js"></script>

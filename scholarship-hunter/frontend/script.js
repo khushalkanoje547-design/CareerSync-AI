@@ -40,10 +40,7 @@ form.addEventListener("submit", async (e) => {
       throw new Error(data.error || "Something went wrong. Please try again.");
     }
 
-    // Save studentId locally so the opportunities page knows who's asking
     localStorage.setItem("studentId", data._id);
-
-    // Redirect to the opportunities page
     window.location.href = "opportunities.html";
 
   } catch (err) {

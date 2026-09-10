@@ -9,23 +9,33 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
- 
+
   <div class="page">
-    <header class="brand">
-      <span class="brand-mark">CareerSync</span><span class="brand-mark-accent">AI</span>
+    <header class="top-bar">
+      <div class="brand">
+        <span class="brand-mark">CareerSync</span><span class="brand-mark-accent">AI</span>
+      </div>
+      <a href="index.html" class="edit-link">Edit profile</a>
     </header>
- 
+
     <div class="opps-header">
       <h1>Your matches</h1>
-      <span class="opps-count" id="oppsCount"></span>
+      <p class="opps-stat" id="oppsStat">Loading your matches…</p>
     </div>
- 
+
+    <div class="filter-bar" id="filterBar" hidden>
+      <button class="filter-pill active" data-type="all">All</button>
+      <button class="filter-pill" data-type="scholarship">Scholarships</button>
+      <button class="filter-pill" data-type="hackathon">Hackathons</button>
+      <button class="filter-pill" data-type="internship">Internships</button>
+      <button class="filter-pill" data-type="govt_scheme">Govt Schemes</button>
+    </div>
+
     <div id="content">
-      <div class="loading">Finding opportunities for you...</div>
+      <div class="loading">Finding opportunities for you…</div>
     </div>
   </div>
- 
+
   <script src="opportunities.js"></script>
 </body>
 </html>
- 
