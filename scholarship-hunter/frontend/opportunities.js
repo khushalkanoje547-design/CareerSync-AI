@@ -21,6 +21,8 @@ const TYPE_ICONS = {
   govt_scheme: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg>`
 };
 
+const ARROW_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>`;
+
 function daysLeft(dateStr) {
   const date = new Date(dateStr);
   const now = new Date();
@@ -68,7 +70,7 @@ function renderOpportunities() {
     content.innerHTML = `
       <div class="empty-state">
         <p>No ${activeFilter === "all" ? "" : TYPE_LABELS[activeFilter].toLowerCase() + " "}opportunities match right now.</p>
-        <p class="empty-sub">Check back soon — new ones are added regularly.</p>
+        <p>Check back soon — new ones are added regularly.</p>
       </div>`;
     return;
   }
@@ -82,7 +84,7 @@ function renderOpportunities() {
         <h3>${opp.title}</h3>
         <p>${opp.description || ""}</p>
         <div class="opp-deadline deadline-${urgencyClass}">${urgencyText}</div>
-        <a href="${opp.link}" target="_blank" rel="noopener">View details</a>
+        <a href="${opp.link}" target="_blank" rel="noopener" class="details-link">View details ${ARROW_ICON}</a>
       </div>
     `;
   }).join("");
@@ -110,7 +112,7 @@ async function loadOpportunities() {
     content.innerHTML = `
       <div class="empty-state">
         <p>We couldn't find your profile.</p>
-        <p class="empty-sub"><a href="index.html">Fill it out again</a></p>
+        <p><a href="profile.html" class="details-link">Fill it out again ${ARROW_ICON}</a></p>
       </div>`;
     oppsStat.textContent = "";
     return;

@@ -3,107 +3,150 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CareerSync AI — Build Your Profile</title>
+<title>CareerSync AI — Eligible Opportunities, Matched</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="shell">
-    <div class="intro-panel">
-      <div class="brand">
-        <span class="brand-mark">CareerSync</span><span class="brand-mark-accent">AI</span>
+<div class="hero-bg">
+  <nav class="navbar">
+    <a href="index.html" class="brand">CareerSync <span class="brand-accent">AI</span></a>
+    <div class="nav-links">
+      <a href="#scholarships">Scholarships</a>
+      <a href="#internships">Internships</a>
+      <a href="#hackathons">Hackathons</a>
+      <a href="#government">Govt Schemes</a>
+    </div>
+    <a href="profile.html" class="btn btn-primary">Find my matches</a>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <span class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+        Eligibility-first discovery for Indian students
+      </span>
+
+      <h1>Find what you're actually <span class="accent">eligible for</span> — before the deadline.</h1>
+
+      <p class="hero-sub">One profile unlocks scholarships, internships, hackathons and government schemes matched to your branch, year, category and skills.</p>
+
+      <div class="hero-cta">
+        <a href="profile.html" class="btn btn-primary btn-lg">
+          Find my matches
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <span class="hero-cta-note">Create your profile in under a minute.</span>
       </div>
-
-      <span class="intro-eyebrow">For Indian college students</span>
-      <h1 class="intro-heading">Every scholarship, ranked for you.</h1>
-      <p class="intro-text">
-        Thousands of scholarships, hackathons and internships open every year —
-        most students never hear about the ones they'd actually qualify for.
-      </p>
-
-      <ul class="intro-highlights">
-        <li>
-          <span class="highlight-dot"></span>
-          See only what you're eligible for, not everything that exists
-        </li>
-        <li>
-          <span class="highlight-dot"></span>
-          Deadlines sorted by urgency, so nothing slips by
-        </li>
-        <li>
-          <span class="highlight-dot"></span>
-          One profile, matched against everything we track
-        </li>
-      </ul>
-
-      <p class="intro-footline">Scholarships, hackathons and internships — pulled from NSP, AICTE and beyond.</p>
     </div>
 
-    <div class="form-panel">
-      <main class="form-card">
-        <h2>Tell us about you</h2>
-        <p class="subtitle">Takes under a minute — this is what powers your matches.</p>
-
-        <form id="profileForm">
-          <div class="field">
-            <label for="name">Full name</label>
-            <input type="text" id="name" required placeholder="e.g. Khushal Kanoje">
+    <div class="preview-wrap">
+      <div class="preview-card">
+        <div class="preview-card-head">
+          <div>
+            <p>Your opportunity desk</p>
+            <span>A preview of eligibility-first matching</span>
           </div>
-
-          <div class="field">
-            <label for="email">Email</label>
-            <input type="email" id="email" required placeholder="you@college.edu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </div>
+        <div class="preview-row">
+          <div class="preview-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg>
           </div>
-
-          <div class="row">
-            <div class="field">
-              <label for="branch">Branch</label>
-              <input type="text" id="branch" required placeholder="e.g. Computer Science">
-            </div>
-            <div class="field">
-              <label for="year">Year</label>
-              <select id="year" required>
-                <option value="">Select</option>
-                <option value="1">1st Year</option>
-                <option value="2">2nd Year</option>
-                <option value="3">3rd Year</option>
-                <option value="4">4th Year</option>
-              </select>
-            </div>
+          <div class="preview-text">
+            <p>National Merit Scholarship</p>
+            <span>For undergraduate STEM students</span>
           </div>
-
-          <div class="row">
-            <div class="field">
-              <label for="category">Category</label>
-              <select id="category">
-                <option value="General">General</option>
-                <option value="OBC">OBC</option>
-                <option value="SC">SC</option>
-                <option value="ST">ST</option>
-                <option value="EWS">EWS</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="location">Location</label>
-              <input type="text" id="location" placeholder="e.g. Aurangabad">
-            </div>
+          <span class="pill-fit">Strong fit</span>
+        </div>
+        <div class="preview-row">
+          <div class="preview-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
           </div>
-
-          <div class="field">
-            <label for="skills">Skills</label>
-            <input type="text" id="skills" placeholder="React, Python, Public Speaking">
-            <span class="hint">Comma-separated</span>
+          <div class="preview-text">
+            <p>Product Engineering Intern</p>
+            <span>Remote · 2nd and 3rd year</span>
           </div>
+          <span class="pill-fit">Eligible</span>
+        </div>
+      </div>
+      <div class="floating-badge">
+        <p>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+          Deadline aware
+        </p>
+        <span>Urgent matches rise first</span>
+      </div>
+    </div>
+  </section>
+</div>
 
-          <button type="submit" id="submitBtn">Find my opportunities</button>
-          <p class="error" id="errorMsg"></p>
-        </form>
-      </main>
+<section class="section">
+  <p class="section-eyebrow">Opportunity preview</p>
+  <h2>The right options, without the noise.</h2>
+  <p class="section-sub">Illustrative examples of what can appear in your personalized results.</p>
+  <hr class="divider">
+
+  <div class="sample-grid">
+    <div class="sample-card" id="scholarships">
+      <div class="sample-card-top">
+        <div class="sample-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5"/></svg>
+        </div>
+        <span class="pill-fit">Strong fit</span>
+      </div>
+      <p class="sample-type">Scholarship</p>
+      <h3>National Merit Scholarship</h3>
+      <p class="desc">For undergraduate STEM students</p>
+      <p class="sample-foot">Matched against your student profile</p>
+    </div>
+
+    <div class="sample-card" id="internships">
+      <div class="sample-card-top">
+        <div class="sample-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <span class="pill-fit">Eligible</span>
+      </div>
+      <p class="sample-type">Internship</p>
+      <h3>Product Engineering Intern</h3>
+      <p class="desc">Remote · 2nd and 3rd year</p>
+      <p class="sample-foot">Matched against your student profile</p>
+    </div>
+
+    <div class="sample-card" id="hackathons">
+      <div class="sample-card-top">
+        <div class="sample-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 9-4 3 4 3"/><path d="m16 9 4 3-4 3"/><path d="m13 6-2 12"/></svg>
+        </div>
+        <span class="pill-fit">Eligible</span>
+      </div>
+      <p class="sample-type">Hackathon</p>
+      <h3>Build for Bharat Challenge</h3>
+      <p class="desc">Open to all branches</p>
+      <p class="sample-foot">Matched against your student profile</p>
     </div>
   </div>
+</section>
 
-  <script src="script.js"></script>
+<div class="cta-banner" id="government">
+  <div>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg>
+    <h2>Government schemes belong in your search, too.</h2>
+    <p>CareerSync brings scholarships, public schemes, hackathons and internships into one clear shortlist, filtered by the details that decide real eligibility.</p>
+  </div>
+  <a href="profile.html" class="btn btn-accent btn-lg">
+    Build my profile
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+  </a>
+</div>
+
+<footer class="footer">
+  <span class="brand">CareerSync <span class="brand-accent">AI</span></span>
+  <span>Built for Indian college students.</span>
+</footer>
+
 </body>
 </html>
