@@ -22,6 +22,15 @@ const TYPE_ICONS = {
 };
 
 const ARROW_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>`;
+const SPARK_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>`;
+
+// Read ?type= from the URL (set by nav links on the landing page) so the
+// matching filter is pre-selected when the page loads.
+const urlParams = new URLSearchParams(window.location.search);
+const requestedType = urlParams.get("type");
+if (requestedType && TYPE_LABELS[requestedType]) {
+  activeFilter = requestedType;
+}
 
 function daysLeft(dateStr) {
   const date = new Date(dateStr);
@@ -61,6 +70,14 @@ function renderStats(opportunities) {
   oppsStat.textContent = text;
 }
 
+function scoreBadge(score) {
+  if (score === null || score === undefined) return "";
+  let tone = "score-low";
+  if (score >= 75) tone = "score-high";
+  else if (score >= 45) tone = "score-mid";
+  return `<span class="match-score ${tone}">${SPARK_ICON}${score}% match</span>`;
+}
+
 function renderOpportunities() {
   const filtered = activeFilter === "all"
     ? allOpportunities
@@ -80,9 +97,13 @@ function renderOpportunities() {
     const icon = TYPE_ICONS[opp.type] || "";
     return `
       <div class="opp-card" data-type="${opp.type}">
-        <span class="opp-type type-${opp.type}">${icon}${TYPE_LABELS[opp.type] || opp.type}</span>
+        <div class="opp-card-top">
+          <span class="opp-type type-${opp.type}">${icon}${TYPE_LABELS[opp.type] || opp.type}</span>
+          ${scoreBadge(opp.matchScore)}
+        </div>
         <h3>${opp.title}</h3>
         <p>${opp.description || ""}</p>
+        ${opp.matchReason ? `<p class="match-reason">${SPARK_ICON}${opp.matchReason}</p>` : ""}
         <div class="opp-deadline deadline-${urgencyClass}">${urgencyText}</div>
         <a href="${opp.link}" target="_blank" rel="noopener" class="details-link">View details ${ARROW_ICON}</a>
       </div>
@@ -94,6 +115,11 @@ function renderOpportunities() {
 
 function setupFilters() {
   filterBar.hidden = false;
+
+  filterBar.querySelectorAll(".filter-pill").forEach(p => {
+    p.classList.toggle("active", p.dataset.type === activeFilter);
+  });
+
   filterBar.addEventListener("click", (e) => {
     const btn = e.target.closest(".filter-pill");
     if (!btn) return;
@@ -117,6 +143,11 @@ async function loadOpportunities() {
     oppsStat.textContent = "";
     return;
   }
+
+  // The first load for a student calls Gemini and can take a few seconds —
+  // subsequent loads hit the cache and are instant, but the message stays
+  // honest either way since we can't tell in advance.
+  content.innerHTML = `<div class="loading">Analysing your profile against eligible opportunities…</div>`;
 
   try {
     const res = await fetch(`${API_BASE}/opportunities/match/${studentId}`);

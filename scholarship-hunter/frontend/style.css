@@ -648,3 +648,46 @@ input:focus, select:focus {
   border-radius: 16px;
 }
 .empty-state p { margin: 0 0 14px; }
+
+/* ---------- Add this block to the end of style.css ---------- */
+ 
+.opp-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.opp-card-top .opp-type { margin-bottom: 0; }
+ 
+.match-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.match-score svg { width: 12px; height: 12px; }
+ 
+.score-high { color: oklch(0.5 0.14 164); background: oklch(0.75 0.12 164 / 22%); }
+.score-mid  { color: oklch(0.55 0.15 70); background: oklch(0.68 0.15 70 / 20%); }
+.score-low  { color: var(--muted-fg); background: var(--muted); }
+ 
+.match-reason {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 12.5px;
+  font-style: italic;
+  color: var(--primary);
+  background: oklch(0.56 0.24 293 / 6%);
+  padding: 8px 10px;
+  border-radius: 8px;
+  margin: 0 0 14px;
+}
+.match-reason svg { width: 13px; height: 13px; flex-shrink: 0; margin-top: 1px; }
+ 
