@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
-
+ 
 const opportunitySchema = new mongoose.Schema({
   title: { type: String, required: true },
   type: {
     type: String,
-    enum: ['scholarship', 'hackathon', 'internship', 'govt_scheme'],
+    enum: ['scholarship', 'hackathon', 'internship', 'govt_scheme', 'ideathon'],
     required: true
   },
   eligibleBranches: [{ type: String }], // ["any"] means open to all branches
@@ -16,5 +16,6 @@ const opportunitySchema = new mongoose.Schema({
   description: { type: String },
   createdAt: { type: Date, default: Date.now }
 });
-
+ 
 module.exports = mongoose.model('Opportunity', opportunitySchema);
+ 
