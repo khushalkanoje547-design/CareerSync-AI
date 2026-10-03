@@ -5,6 +5,7 @@ const cors = require('cors');
 
 const studentRoutes = require('./routes/students');
 const opportunityRoutes = require('./routes/opportunities');
+const draftRoutes = require('./routes/drafts');
 
 const app = express();
 app.use(cors());
@@ -12,6 +13,7 @@ app.use(express.json());
 
 app.use('/api/students', studentRoutes);
 app.use('/api/opportunities', opportunityRoutes);
+app.use('/api/drafts', draftRoutes);
 
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB connected'))

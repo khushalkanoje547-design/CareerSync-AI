@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+ 
   <div class="profile-shell">
     <div class="profile-card">
       <aside class="profile-aside">
@@ -17,12 +17,12 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
           Back home
         </a>
-
+ 
         <svg class="spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
-
+ 
         <h1>One profile. Every relevant opportunity.</h1>
         <p>Share the details used by real eligibility rules. CareerSync will filter the opportunity list for you.</p>
-
+ 
         <ul class="profile-checklist">
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -38,23 +38,23 @@
           </li>
         </ul>
       </aside>
-
+ 
       <main class="profile-main">
         <p class="eyebrow-label">Student profile</p>
         <h2>Tell us about you</h2>
         <p class="sub">Takes under a minute — this powers your matches.</p>
-
+ 
         <form id="profileForm">
           <div class="field">
             <label for="name">Full name</label>
             <input type="text" id="name" required placeholder="e.g. Khushal Kanoje">
           </div>
-
+ 
           <div class="field">
             <label for="email">Email</label>
             <input type="email" id="email" required placeholder="you@college.edu">
           </div>
-
+ 
           <div class="row">
             <div class="field">
               <label for="branch">Branch</label>
@@ -71,7 +71,7 @@
               </select>
             </div>
           </div>
-
+ 
           <div class="row">
             <div class="field">
               <label for="category">Category</label>
@@ -88,13 +88,19 @@
               <input type="text" id="location" placeholder="e.g. Aurangabad">
             </div>
           </div>
-
+ 
           <div class="field">
             <label for="skills">Skills</label>
             <input type="text" id="skills" placeholder="React, Python, Public Speaking">
             <span class="hint">Separate skills with commas</span>
           </div>
-
+ 
+          <div class="field">
+            <label for="resumeText">Resume (optional, for now)</label>
+            <textarea id="resumeText" rows="6" placeholder="Paste your resume as plain text — your education, projects, achievements, and experience. This stays optional for now, but it's what powers AI-generated application drafts later."></textarea>
+            <span class="hint">Paste as plain text — you can add or update this anytime from your profile.</span>
+          </div>
+ 
           <button type="submit" id="submitBtn" class="btn btn-primary btn-block btn-lg">
             Find my opportunities
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -104,7 +110,8 @@
       </main>
     </div>
   </div>
-
+ 
   <script src="script.js"></script>
 </body>
 </html>
+ 
