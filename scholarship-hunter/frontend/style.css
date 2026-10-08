@@ -730,6 +730,7 @@ textarea { resize: vertical; min-height: 110px; font-family: 'Manrope', sans-ser
   padding: 20px;
   z-index: 100;
 }
+.draft-overlay[hidden] { display: none; }
  
 .draft-panel {
   width: 100%;
