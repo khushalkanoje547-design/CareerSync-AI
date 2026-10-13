@@ -702,6 +702,36 @@ textarea { resize: vertical; min-height: 110px; font-family: 'Manrope', sans-ser
   flex-wrap: wrap;
 }
  
+.opp-actions-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+ 
+.save-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--muted-fg);
+  background: var(--card-solid);
+  border: 1px solid var(--border);
+  padding: 7px 13px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.save-btn svg { width: 13px; height: 13px; }
+.save-btn:hover:not(:disabled) { border-color: var(--primary); color: var(--primary); }
+.save-btn.active {
+  color: var(--type-govt_scheme);
+  background: oklch(0.62 0.19 25 / 10%);
+  border-color: oklch(0.62 0.19 25 / 30%);
+}
+.save-btn:disabled { cursor: default; opacity: 0.85; }
+ 
 .draft-btn {
   display: inline-flex;
   align-items: center;

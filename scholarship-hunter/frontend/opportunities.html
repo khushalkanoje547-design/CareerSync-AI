@@ -9,22 +9,28 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+ 
   <div class="page">
     <header class="top-bar">
       <a href="index.html" class="brand">CareerSync <span class="brand-accent">AI</span></a>
-      <a href="profile.html" class="edit-link">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
-        Edit profile
-      </a>
+      <div class="opp-actions-right">
+        <a href="applications.html" class="edit-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+          My applications
+        </a>
+        <a href="profile.html" class="edit-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+          Edit profile
+        </a>
+      </div>
     </header>
-
+ 
     <div class="opps-header">
       <p class="opps-eyebrow">Personal opportunity desk</p>
       <h1>Your matches</h1>
       <p class="opps-stat" id="oppsStat">Loading your matches…</p>
     </div>
-
+ 
     <div class="filter-bar" id="filterBar" hidden>
       <button class="filter-pill active" data-type="all">All</button>
       <button class="filter-pill" data-type="scholarship">Scholarships</button>
@@ -33,12 +39,13 @@
       <button class="filter-pill" data-type="govt_scheme">Govt Schemes</button>
       <button class="filter-pill" data-type="ideathon">Ideathons</button>
     </div>
-
+ 
     <div id="content">
       <div class="loading">Finding opportunities for you…</div>
     </div>
   </div>
-
+ 
   <script src="opportunities.js"></script>
 </body>
 </html>
+ 

@@ -6,6 +6,8 @@ const filterBar = document.getElementById("filterBar");
  
 let allOpportunities = [];
 let activeFilter = "all";
+let savedIds = new Set();
+let appliedIds = new Set();
  
 const TYPE_LABELS = {
   scholarship: "Scholarship",
@@ -24,6 +26,8 @@ const TYPE_ICONS = {
 };
  
 const ARROW_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>`;
+const BOOKMARK_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>`;
+const BOOKMARK_FILLED_ICON = `<svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>`;
 const SPARK_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>`;
  
 // Read ?type= from the URL (set by nav links on the landing page) so the
@@ -97,6 +101,10 @@ function renderOpportunities() {
   const cards = filtered.map(opp => {
     const { urgencyClass, urgencyText } = formatDeadline(opp.deadline);
     const icon = TYPE_ICONS[opp.type] || "";
+    const isApplied = appliedIds.has(opp._id);
+    const isSaved = savedIds.has(opp._id);
+    const saveLabel = isApplied ? "Applied" : (isSaved ? "Saved" : "Save");
+    const saveIcon = (isApplied || isSaved) ? BOOKMARK_FILLED_ICON : BOOKMARK_ICON;
     return `
       <div class="opp-card" data-type="${opp.type}">
         <div class="opp-card-top">
@@ -109,7 +117,10 @@ function renderOpportunities() {
         <div class="opp-deadline deadline-${urgencyClass}">${urgencyText}</div>
         <div class="opp-actions">
           <a href="${opp.link}" target="_blank" rel="noopener" class="details-link">View details ${ARROW_ICON}</a>
-          <button type="button" class="draft-btn" data-opp-id="${opp._id}">${SPARK_ICON}Generate Draft</button>
+          <div class="opp-actions-right">
+            <button type="button" class="save-btn${isSaved || isApplied ? " active" : ""}" data-opp-id="${opp._id}" ${isApplied ? "disabled" : ""}>${saveIcon}${saveLabel}</button>
+            <button type="button" class="draft-btn" data-opp-id="${opp._id}">${SPARK_ICON}Generate Draft</button>
+          </div>
         </div>
       </div>
     `;
@@ -163,6 +174,20 @@ async function loadOpportunities() {
     }
  
     allOpportunities = data;
+ 
+    // Fetch saved/applied status separately — if this fails, the page still
+    // works fine, it just shows every card as un-saved.
+    try {
+      const savedRes = await fetch(`${API_BASE}/saved/${studentId}`);
+      const savedData = await savedRes.json();
+      if (savedRes.ok) {
+        savedIds = new Set(savedData.filter(s => s.status === "saved").map(s => s._id));
+        appliedIds = new Set(savedData.filter(s => s.status === "applied").map(s => s._id));
+      }
+    } catch {
+      // non-fatal — leave savedIds/appliedIds empty
+    }
+ 
     renderStats(data);
     setupFilters();
     renderOpportunities();
@@ -268,6 +293,34 @@ draftRegenerateBtn.addEventListener("click", () => {
   const studentId = localStorage.getItem("studentId");
   if (!studentId || !currentDraftOppId) return;
   fetchDraft(studentId, currentDraftOppId, { regenerate: true });
+});
+ 
+// ---------- Save / Unsave ----------
+ 
+content.addEventListener("click", async (e) => {
+  const btn = e.target.closest(".save-btn");
+  if (!btn || btn.disabled) return;
+ 
+  const studentId = localStorage.getItem("studentId");
+  if (!studentId) return;
+ 
+  const oppId = btn.dataset.oppId;
+  const isCurrentlySaved = savedIds.has(oppId);
+ 
+  btn.disabled = true;
+ 
+  try {
+    if (isCurrentlySaved) {
+      await fetch(`${API_BASE}/saved/${studentId}/${oppId}`, { method: "DELETE" });
+      savedIds.delete(oppId);
+    } else {
+      await fetch(`${API_BASE}/saved/${studentId}/${oppId}`, { method: "POST" });
+      savedIds.add(oppId);
+    }
+    renderOpportunities();
+  } catch {
+    btn.disabled = false; // let them retry on network failure
+  }
 });
  
 draftCopyBtn.addEventListener("click", async () => {
